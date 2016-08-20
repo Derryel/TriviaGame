@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" herf="assets/images/imgres.htm"
+	<meta charset="UTF=8">
+	<title>Marvel Trivia</title>
+</head>
+
+ <script type="text/javascript">
+        var hoursLabel = document.getElementById("hours");
+        var minutesLabel = document.getElementById("minutes");
+        var secondsLabel = document.getElementById("seconds");
+        var totalTime = document.getElementById("totalTime");
+        var totalSeconds = 0;
+        var totalMinutes = 0;
+        var totalHours = 0;
+        var counter;
+        var timerOn;
+        var htmlResets;
+        var totalMills = 0;
+ 
+        function startTimer() {
+            if (timerOn == 1) {
+                return;
+            }
+            else {
+                counter = setInterval(setTime, 10);
+                timerOn = 1;
+                htmlResets = 0;
+            }
+        }
+ 
+        function pauseTimer() {
+            if (timerOn == 1) {
+                clearInterval(counter);
+                timerOn = 0;
+            }
+ 
+            if (htmlResets == 1) {
+                hoursLabel.innerHTML = "00";
+                minutesLabel.innerHTML = "00";
+                secondsLabel.innerHTML = "00";
+                totalMills = 0;
+                totalSeconds = 0;
+                totalMinutes = 0;
+                totalHours = 0;
+            }
+            else {
+                htmlResets = 1;
+            }
+        }
+ 
+        function stopTimer() {
+            totalTime.innerHTML = "Time Recorded: " + hoursLabel.innerHTML + ":" + minutesLabel.innerHTML + ":" + secondsLabel.innerHTML;
+            hoursLabel.innerHTML = "00";
+            minutesLabel.innerHTML = "00";
+            secondsLabel.innerHTML = "00";
+            totalMills = 0;
+            totalSeconds = 0;
+            totalMinutes = 0;
+            totalHours = 0;
+            clearInterval(counter);
+            timerOn = 0;
+        }
+ 
+        function setTime() {
+            ++totalMills;
+            if (totalHours == 99 & totalMinutes == 59 & totalSeconds == 60) {
+                totalHours = 0;
+                totalMinutes = 0;
+                totalSeconds = 0;
+                hoursLabel.innerHTML = "00";
+                minutesLabel.innerHTML = "00";
+                secondsLabel.innerHTML = "00";
+                clearInterval(counter);
+            }
+            if (totalMills == 100) {
+                totalSeconds++;
+                secondsLabel.innerHTML = pad(totalSeconds % 60);
+                totalMills = 0;
+            }
+            if (totalSeconds == 60) {
+                totalMinutes++;
+                minutesLabel.innerHTML = pad(totalMinutes % 60);
+                totalSeconds = 0;
+            }
+            if (totalMinutes == 60) {
+                totalHours++;
+                hoursLabel.innerHTML = pad(totalHours);
+                totalMinutes = 0;
+            }
+        }
+ 
+        function pad(val) {
+            var valString = val + "";
+            if (valString.length < 2) {
+                return "0" + valString;
+            }
+            else {
+                return valString;
+            }
+        }
+    </script>
+
+<body>
+<div style="text-align: center">
+        <span style="font-size: 11px">HH:MM:SS</span><br/>
+        <label id="hours">
+            00</label>:
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+        <br />
+        <input type="button" id="gobutton" onclick="startTimer()" value="Start">
+        
+        <br />
+        <label id="totalTime">
+        </label>
+    </div>
+	<div class="container">
+		<div class="logo">
+			<h1>Marvel's Cinematic Universe Trivia</h1>
+		</div>
+		<div id="time">
+			<p>Time Remaining:</p>
+		</div>
+	</div>
+	<div id="q1"> 		
+		<p>In which Marvel movie was Howard The Duck spotted?</p>
+			<ul>
+				<input type="radio" name="In which Marvel movie was Howard The Duck spotted?" value="Iron MAn">Iron Man<br>
+				<input type="radio" name="In which Marvel movie was Howard The Duck spotted?" value="Iron Man 2">Iron Man 2<br>
+				<input type="radio" name="In which Marvel movie was Howard The Duck spotted?" value="Guardians of the Galaxy">Guardians of the Galaxy<br>
+				<input type="radio" name="In which Marvel movie was Howard The Duck spotted?" value="Thor: The Dark World">Thor: The Dark World<br>
+				
+				
+			</ul>
+	</div>
+	<div id="q2"> 
+	<p>What race is Ronan the Accuser?</p>
+			<ul>
+				<input type="radio" name="What race is Ronan the Accuser?" value="Kree">Kree<br>
+				<input type="radio" name="What race is Ronan the Accuser?" value="Human">Human<br>
+				<input type="radio" name="What race is Ronan the Accuser?" value="Skrull">Skrull<br>
+				<input type="radio" name="What race is Ronan the Accuser?" value="Iceran">Iceran<br>
+				
+				
+			</ul>
+	</div>
+	<div id="q3"> 
+			<p>Which one is not an Infinity Gem?</p>
+			<ul>
+				<input type="radio" name="Which one is not an Infinity Gem?" value="Time">Time<br>
+				<input type="radio" name="Which one is not an Infinity Gem?" value="Mind">Mind<br>
+				<input type="radio" name="Which one is not an Infinity Gem?" value="Soul">Soul<br>
+				<input type="radio" name="Which one is not an Infinity Gem?" value="Love">Love<br>
+				
+	
+	</div>
+	<div id="q4"> 
+	<p>Which Super Hero is not an Avenger in Marvel's Cinematic Universe?</p>
+			<ul>
+				<input type="radio" name="Which Super Hero is not an Avenger in Marvel's Cinematic Universe?" value="Wolverine">Wolverine<br>
+				<input type="radio" name="Which Super Hero is not an Avenger in Marvel's Cinematic Universe?" value="Ant-Man"Ant-Man>Ant-Man<br>
+				<input type="radio" name="Which Super Hero is not an Avenger in Marvel's Cinematic Universe?" value="Captain America">Captain America<br>
+				<input type="radio" name="Which Super Hero is not an Avenger in Marvel's Cinematic Universe?" value="Hawkeye">Hawkeye<br>
+						
+	
+	</div>
+	<div id="q5">
+	<p>What is the name of thor's hammer?</p>
+			<ul>
+				<input type="radio" name="What is the name of thor's hammer?" value="Jill">Jill<br>
+				<input type="radio" name="What is the name of thor's hammer?" value="HAMMER">HAMMER<br>
+				<input type="radio" name="What is the name of thor's hammer?" value="Mjolnir">Mjolnir<br>
+				<input type="radio" name="What is the name of thor's hammer?" value="Qdillor">Qdillor<br>
+				 		
+
+	</div><br>
+<br>
+<br>
+<br>
+<input type="submit" value="Send">
+<input type="reset" value="Clear">
+</form>
+	
+</body>
+</html>
